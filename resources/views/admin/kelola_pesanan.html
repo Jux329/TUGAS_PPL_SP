@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelola Pesanan - Admin UMKM Culinary's NTT</title>
+  <link rel="stylesheet" href="css/kelola_pesanan.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div id="admin-sidebar-container"></div>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Kelola Pesanan</h1>
+          <p class="page-desc">Pantau dan kelola semua pesanan dari pelanggan UMKM Culinary's NTT</p>
+        </div>
+      </div>
+
+      <!-- Filter & Search -->
+      <div class="card-box" style="margin-bottom: 24px;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <input type="text" id="search-order" class="form-control" placeholder="Cari by No Pesanan atau Nama Pelanggan..." style="flex: 1; min-width: 200px;">
+          <select id="status-filter" class="form-control" style="min-width: 150px;">
+            <option value="">Semua Status</option>
+            <option value="Menunggu">Menunggu</option>
+            <option value="Diproses">Diproses</option>
+            <option value="Selesai">Selesai</option>
+            <option value="Batal">Batal</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Orders Table -->
+      <div class="card-box">
+        <h2 style="font-size: 16px; font-weight: 800; color: #0c0a09; margin-bottom: 16px; border-bottom: 1px solid #f5f5f4; padding-bottom: 8px; display: flex; justify-content: space-between;">
+          <span>Daftar Pesanan</span>
+          <span id="total-order-count" style="font-size: 12px; color: #78716c;">Total: 0</span>
+        </h2>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>No Pesanan</th>
+                <th>Nama Pelanggan</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Tanggal</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body">
+              <!-- Populated by script -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Order Detail Modal -->
+      <div id="order-detail-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="card-box" style="max-width: 600px; max-height: 80vh; overflow-y: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #f5f5f4; padding-bottom: 12px;">
+            <h2 style="font-size: 18px; font-weight: 800;">Detail Pesanan</h2>
+            <button onclick="closeOrderModal()" style="background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
+          </div>
+          
+          <div id="order-detail-content">
+            <!-- Populated by script -->
+          </div>
+
+          <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #f5f5f4; display: flex; gap: 10px;">
+            <button onclick="updateOrderStatus('Diproses')" class="btn btn-secondary btn-sm">Proses Pesanan</button>
+            <button onclick="updateOrderStatus('Selesai')" class="btn btn-primary btn-sm">Tandai Selesai</button>
+            <button onclick="closeOrderModal()" class="btn btn-secondary btn-sm">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/kelola_pesanan.js"></script>
+</body>
+</html>

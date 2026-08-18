@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keranjang Belanja - UMKM Culinary's NTT</title>
+
+    <link rel="stylesheet" href="css/keranjang.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="header-navbar">
+        <div class="header-container">
+
+            <a href="menu.html" class="brand-link">
+                <div class="brand-logo-icon">🍽️</div>
+
+                <div>
+                    <div class="brand-name">
+                        Culinary's NTT
+                    </div>
+
+                    <div class="brand-tag">
+                        Kuliner Khas NTT
+                    </div>
+                </div>
+            </a>
+
+
+            <nav class="nav-links-wrap">
+
+                <a href="menu.html" class="nav-item">
+                    Menu
+                </a>
+
+                <a href="pesanan.html" class="nav-item">
+                    Pesanan
+                </a>
+
+                <a href="keranjang.html" class="cart-pill active">
+                    🛒 Keranjang
+                    <span id="cart-count" class="cart-count">0</span>
+                </a>
+
+                <button
+                    type="button"
+                    id="logout-btn"
+                    class="nav-logout"
+                >
+                    Keluar
+                </button>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main-wrapper">
+
+        <div class="page-heading">
+
+            <h1>
+                Keranjang Belanja
+            </h1>
+
+            <p>
+                Periksa item pesanan Anda dan lengkapi data pengantaran
+            </p>
+
+        </div>
+
+
+        <div class="checkout-layout">
+
+            <!-- =========================
+                 CART
+            ========================== -->
+            <section
+                class="card-box"
+                id="cart-list-container"
+            >
+                <!-- Diisi oleh keranjang.js -->
+            </section>
+
+
+            <!-- =========================
+                 CHECKOUT
+            ========================== -->
+            <section
+                class="card-box"
+                id="checkout-box"
+            >
+
+                <h2 class="section-title">
+                    Data Pemesan & Pengantaran
+                </h2>
+
+
+                <form id="checkout-form">
+
+                    <div class="form-group">
+
+                        <label for="order-cust-name">
+                            Nama Penerima *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="order-cust-name"
+                            class="form-control"
+                            placeholder="Nama Lengkap"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="order-cust-phone">
+                            Nomor WhatsApp / Telepon *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="order-cust-phone"
+                            class="form-control"
+                            placeholder="0812xxxxxxxx"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="order-cust-address">
+                            Alamat Lengkap Pengiriman *
+                        </label>
+
+                        <textarea
+                            id="order-cust-address"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Jl. El Tari No. XX, Kupang"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="order-cust-notes">
+                            Catatan Khusus (Opsional)
+                        </label>
+
+                        <input
+                            type="text"
+                            id="order-cust-notes"
+                            class="form-control"
+                            placeholder="Contoh: Sambal dipisah, tidak pedas"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="order-payment-method">
+                            Metode Pembayaran *
+                        </label>
+
+                        <select
+                            id="order-payment-method"
+                            class="form-control"
+                            required
+                        >
+
+                            <option value="QRIS">
+                                QRIS (GoPay, OVO, Dana, ShopeePay)
+                            </option>
+
+                            <option value="Transfer Bank BCA">
+                                Transfer Bank BCA
+                            </option>
+
+                            <option value="Transfer Bank Mandiri">
+                                Transfer Bank Mandiri
+                            </option>
+
+                            <option value="Bayar di Tempat (COD)">
+                                Bayar di Tempat (COD)
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =========================
+                         TOTAL
+                    ========================== -->
+                    <div class="summary-box">
+
+                        <div class="summary-row">
+
+                            <span>
+                                Subtotal Item:
+                            </span>
+
+                            <strong id="summary-subtotal">
+                                Rp 0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Biaya Ongkir:
+                            </span>
+
+                            <strong class="free-shipping">
+                                GRATIS
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-total">
+
+                            <span>
+                                Total Bayar:
+                            </span>
+
+                            <strong id="summary-total">
+                                Rp 0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        id="btn-submit-order"
+                        class="btn btn-primary submit-button"
+                    >
+                        Konfirmasi Pesanan →
+                    </button>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+    <div
+        id="toast-msg"
+        class="toast-msg"
+    ></div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script src="js/keranjang.js"></script>
+
+</body>
+</html>
