@@ -10,8 +10,7 @@
      <script>
   document.addEventListener('alpine:init', () => {
     Alpine.store('shop', {
-      activeCategory: 'semua',
-      searchQuery: ''
+      activeCategory: 'semua'
     });
   });
 </script>
@@ -29,12 +28,19 @@
   ```
 -->
 <div class="min-h-full">
-  <x-navbar></x-navbar>
+  <x-navbar>
+    
+  </x-navbar>
+  <br>
+  <x-kategori>
+  </x-kategori>
   
+
+  <x-productcom>
+
+  </x-productcom>
   <main>
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      {{ $slot }}
-    </div>
+    
   </main>
   <x-footer>
   </x-footer>

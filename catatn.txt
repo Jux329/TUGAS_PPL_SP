@@ -1,0 +1,4 @@
+jangan lupa ganti logo di navbar dan juga gambar profile
+
+serta jangan lupa juga perbaiki bug di kategori yang menyebabkan kategori tidak aktif untuk mengkatgorikan produk
+dan juga jangan lupa membuat tampilan login register dan profile serta setting
