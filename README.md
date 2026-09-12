@@ -224,3 +224,198 @@ docs/laporan-pengujian.html
 
 Daftar severity, bukti, dan rekomendasi perbaikan tersedia di:
 docs/laporan-pengujian.html
+
+USER MANUAL NTT CULINARY'S
+==========================
+
+Panduan ini menjelaskan cara menggunakan NTT Culinary's sebagai pelanggan
+dan admin.
+
+1. MEMBUKA APLIKASI
+-------------------
+Buka alamat berikut pada browser:
+
+http://127.0.0.1:8000/menu
+
+Halaman menu menampilkan katalog produk aktif, kategori, harga, dan tombol
+untuk menambahkan produk ke keranjang.
+
+2. PANDUAN PELANGGAN
+--------------------
+
+2.1 Melihat produk
+1. Buka halaman Menu.
+2. Gulir ke bagian katalog.
+3. Periksa nama, kategori, harga, dan gambar produk.
+4. Produk dengan stok kosong memiliki tombol Stok habis dan tidak dapat
+   ditambahkan.
+
+2.2 Memfilter kategori
+1. Pilih Semua, Makanan, atau Minuman pada filter katalog.
+2. Produk ditampilkan sesuai kategori.
+3. Pilih Semua untuk menampilkan seluruh produk aktif.
+
+2.3 Menambahkan produk ke keranjang
+1. Pilih produk yang diinginkan.
+2. Klik Tambah ke keranjang.
+3. Sistem menyimpan produk pada keranjang browser/session.
+4. Buka Keranjang untuk memeriksa item dan total.
+5. Tambahkan produk yang sama kembali untuk menaikkan jumlahnya.
+
+2.4 Memeriksa keranjang
+Halaman Keranjang menampilkan:
+- nama produk;
+- harga satuan;
+- jumlah;
+- subtotal;
+- total belanja.
+
+Untuk menghapus item, klik tombol hapus pada produk tersebut.
+
+2.5 Registrasi pelanggan
+1. Klik Register.
+2. Isi nama, email, password, dan konfirmasi password.
+3. Password minimal 8 karakter.
+4. Klik tombol pendaftaran.
+5. Setelah berhasil, pengguna masuk dan diarahkan ke menu.
+
+2.6 Login pelanggan
+1. Klik Login.
+2. Masukkan email dan password.
+3. Aktifkan pilihan ingat saya bila diperlukan.
+4. Klik tombol masuk.
+5. Jika benar, pengguna diarahkan ke halaman menu.
+
+2.7 Checkout
+1. Pastikan keranjang tidak kosong.
+2. Klik Checkout.
+3. Login terlebih dahulu bila diminta.
+4. Periksa daftar produk dan total.
+5. Pilih metode pembayaran:
+   - Transfer bank
+   - E-wallet
+   - Bayar di tempat
+6. Klik Bayar sekarang.
+7. Sistem memeriksa stok, mengurangi stok, dan membuat pesanan.
+8. Setelah berhasil, pengguna diarahkan ke menu dengan pesan konfirmasi.
+
+Jika stok tidak mencukupi, checkout dibatalkan dan pesan kesalahan
+ditampilkan.
+
+2.8 Pengaturan akun
+1. Login sebagai pelanggan.
+2. Buka menu profil.
+3. Pilih User Setting.
+4. Unggah avatar JPG, JPEG, PNG, atau WEBP maksimal 2 MB.
+5. Klik tombol simpan.
+
+2.9 Logout
+Buka menu profil lalu pilih Log out.
+
+3. PANDUAN ADMIN
+---------------
+
+3.1 Membuka halaman admin
+Gunakan alamat:
+http://127.0.0.1:8000/admin/login
+
+3.2 Login admin
+1. Masukkan email akun admin.
+2. Masukkan password.
+3. Klik Login admin.
+4. Jika akun valid dan memiliki flag admin, dashboard terbuka.
+
+Akun pelanggan biasa tidak boleh digunakan untuk mengakses dashboard admin.
+
+3.3 Register admin
+Form register admin tersedia pada:
+http://127.0.0.1:8000/admin/register
+
+CATATAN KEAMANAN:
+Pada versi saat ini endpoint register admin masih terbuka untuk publik.
+Untuk produksi, batasi pendaftaran admin melalui undangan, seed data, atau
+otorisasi khusus.
+
+3.4 Memahami dashboard
+Dashboard menampilkan:
+- total penjualan berstatus selesai;
+- jumlah pesanan menunggu atau diproses;
+- jumlah pelanggan;
+- jumlah produk;
+- daftar inventori produk;
+- tabel operasional pesanan.
+
+Dashboard melakukan refresh berkala untuk mengambil data terbaru.
+
+3.5 Menambahkan produk
+1. Login sebagai admin.
+2. Buka bagian Tambah produk.
+3. Isi nama produk.
+4. Pilih kategori Makanan atau Minuman.
+5. Isi harga dalam Rupiah tanpa tanda titik, contoh 15000.
+6. Isi stok dengan angka non-negatif.
+7. Klik Simpan produk.
+8. Produk muncul pada inventori dan katalog pelanggan jika aktif.
+
+Produk baru belum menyediakan upload gambar. Jika gambar kosong, katalog
+menggunakan gambar default.
+
+3.6 Mengelola status pesanan
+1. Temukan pesanan pada tabel operasional.
+2. Pilih status baru:
+   - Menunggu
+   - Diproses
+   - Dikirim
+   - Selesai
+   - Dibatalkan
+3. Simpan perubahan status.
+4. Ringkasan penjualan menghitung pesanan berstatus Selesai.
+
+3.7 Logout admin
+Klik Keluar dari dashboard pada sidebar atau menu mobile.
+
+4. NAVIGASI UTAMA
+-----------------
+Menu             : Melihat katalog utama dan filter kategori
+Product          : Melihat katalog produk alternatif
+Keranjang        : Melihat dan menghapus item belanja
+About            : Melihat informasi NTT Culinary's
+User Setting     : Mengelola avatar akun setelah login
+Admin Login      : Masuk ke dashboard admin
+
+5. PESAN KESALAHAN UMUM
+-----------------------
+Keranjang masih kosong
+Penyebab : Belum ada produk ditambahkan.
+Tindakan : Kembali ke menu dan pilih produk.
+
+Stok tidak mencukupi
+Penyebab : Jumlah permintaan lebih besar dari stok terbaru.
+Tindakan : Kurangi jumlah atau pilih produk lain.
+
+Email atau password salah
+Penyebab : Kredensial tidak cocok.
+Tindakan : Periksa kembali data login.
+
+Validasi form muncul
+Penyebab : Data wajib kosong atau format salah.
+Tindakan : Perbaiki field yang ditandai.
+
+Akses ditolak
+Penyebab : Akun bukan admin.
+Tindakan : Login menggunakan akun admin.
+
+6. BATASAN VERSI SAAT INI
+--------------------------
+- Pencarian produk pada header belum berfungsi sebagai filter katalog.
+- Link Contact belum memiliki halaman aktif.
+- Halaman riwayat pesanan pelanggan masih dalam pengembangan.
+- Payment gateway eksternal belum tersedia.
+- Harga dan stok perlu dikonfirmasi kembali saat checkout pada versi berikutnya.
+
+Dokumentasi teknis:
+docs/dokumentasi-teknis.txt
+
+Laporan pengujian:
+docs/laporan-pengujian.html
+
